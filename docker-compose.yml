@@ -1,0 +1,28 @@
+version: '2'
+
+services:
+  nginx:
+    build: ./nginx/
+    ports:
+    - "80:80"
+    volumes:
+    - ./code:/var/www
+    links:
+    - php
+    container_name: nginx
+  php:
+    build: ./php/
+    ports: 
+    - "9000:9000"
+    volumes:
+    - ./code:/var/www
+    links:
+    - mysql
+    container_name: php
+  mysql:
+    build: ./mysql/
+    volumes:
+    - ./mysql-data:/var/lib/mysql
+    ports:
+    - "3306:3306"
+    container_name: mysql

@@ -1,0 +1,79 @@
+[mysqld]
+skip-host-cache
+skip-name-resolve
+user     = mysql
+pid-file = /var/run/mysqld/mysqld.pid
+socket   = /var/run/mysqld/mysqld.sock
+port     = 3306
+basedir  = /usr
+datadir  = /var/lib/mysql
+tmpdir   = /tmp
+lc-messages-dir  = /usr/share/mysql
+explicit_defaults_for_timestamp
+
+#bind-address = 127.0.0.1
+
+#log-error    = /var/log/mysql/error.log
+
+sql_mode=
+
+# Disabling symbolic-links is recommended to prevent assorted security risks
+symbolic-links=0
+
+max_connections=1000
+max-allowed-packet              = 16M
+max-connect-errors              = 1000000
+explicit_defaults_for_timestamp = false
+sysdate-is-now                  = 1
+innodb-strict-mode              = 0
+
+tmp-table-size                  = 64M
+max-heap-table-size             = 64M
+max-connections                 = 500
+open-files-limit                = 65535
+table-definition-cache          = 4096
+
+innodb_buffer_pool_size=1G
+innodb_buffer_pool_instances=1
+innodb_buffer_pool_load_at_startup=ON
+innodb_buffer_pool_dump_pct=50
+
+thread_cache_size=250
+innodb-log-files-in-group      = 2
+innodb_log_file_size           = 256M
+innodb_read_io_threads         = 2
+innodb_write_io_threads        = 6
+innodb_file_format = BARRACUDA
+innodb_file_per_table=ON
+innodb_flush_method=O_DIRECT
+innodb_large_prefix=true
+thread_pool_size=4
+
+default-storage-engine = InnoDB
+
+character-set-client-handshake = FALSE
+character-set-server = utf8mb4
+collation-server     = utf8mb4_unicode_ci
+
+key_buffer_size      = 1G
+
+sort_buffer_size     = 2M
+read_rnd_buffer_size = 2M
+
+table_open_cache     = 8192
+
+query_cache_type     = 0
+query_cache_limit    = 33554432
+query_cache_size     = 100663296
+
+[mysqld_safe]
+numa_interleave = 1
+log-error=/var/log/mysqld.log
+pid-file=/var/run/mysqld/mysqld.pid
+
+[mysql]
+default-character-set = utf8mb4
+
+[client]
+default-character-set = utf8mb4
+
